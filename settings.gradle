@@ -1,3 +1,5 @@
+import org.gradle.api.initialization.resolve.RepositoriesMode
+
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -10,6 +12,19 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            authentication {
+                basic(BasicAuthentication)
+            }
+            credentials {pass->
+                // Do not change the username below.
+                // This should always be `mapbox` (not your username).
+                username = "mapbox"
+                // Use the secret token you stored in gradle.properties as the password
+                password = System.properties["MAPBOX_DOWNLOADS_TOKEN"]
+            }
+            url 'https://api.mapbox.com/downloads/v2/releases/maven'
+        }
     }
 }
 rootProject.name = "BoxInterview"
