@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "711521207535",
+    "project_id": "boxinterviewtask",
+    "storage_bucket": "boxinterviewtask.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711521207535:android:134ce5d581fca94e67c71a",
+        "android_client_info": {
+          "package_name": "ir.snapp.box.interview.task"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711521207535-cjpecme22mcoeqe788vl8eutf5lobjac.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ir.snapp.box.interview.task",
+            "certificate_hash": "e8bca1974793afe6c388c536009964843a23e321"
+          }
+        },
+        {
+          "client_id": "711521207535-drsu3u4pr62k7u9p1plm54ejd146p3de.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIUu8vERCvmLvq5-JP_p9vjYP1Zi09cck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711521207535-drsu3u4pr62k7u9p1plm54ejd146p3de.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
