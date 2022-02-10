@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BoxInterview</string>
+    <string name="mapbox_access_token">pk.eyJ1Ijoicy15YXpkYW5pIiwiYSI6ImNremdwbWRqdDNyajYyb3B2ZWcwY3k1MmUifQ.SqEYog0GvYia26dVnAincQ</string>
 </resources>
