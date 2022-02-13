@@ -6,6 +6,7 @@ import android.graphics.Color
 import android.graphics.Paint
 import android.view.View
 
+// ripple view for AcceptOfferButton
 class RippleView(context: Context?) : View(context) {
 
     private lateinit var paint: Paint
