@@ -7,4 +7,8 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="main_button_color">#0049d6</color>
+    <color name="ripple_button_color">#00246b</color>
+    <color name="amount_wrapper_color">#081b43</color>
+    <color name="transparent">#00000000</color>
 </resources>
