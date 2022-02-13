@@ -5,14 +5,187 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="false"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <com.mapbox.maps.MapView
         android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:mapbox_cameraTargetLat="35.7010"
-        app:mapbox_cameraTargetLng="51.0142"
-        app:mapbox_cameraZoom="16.0" />
+        app:mapbox_cameraTargetLat="35.699721"
+        app:mapbox_cameraTargetLng="51.338023"
+        app:mapbox_cameraZoom="8.0" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
+        android:orientation="vertical">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/centerCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|start"
+                android:layout_margin="16dp"
+                android:src="@drawable/ic_center_camera"
+                app:backgroundTint="@color/white"
+                app:tint="@color/teal_700"
+                app:tintMode="src_in" />
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/offerPage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:visibility="visible"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/topHeader"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="28dp"
+                android:src="@drawable/top_header"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvOfferAmount"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginLeft="64dp"
+                android:layout_marginRight="64dp"
+                android:background="@drawable/amount_background"
+                android:gravity="center"
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toTopOf="@+id/topHeader"
+                app:layout_constraintTop_toTopOf="@+id/topHeader"
+                tools:text="35,000 ریال" />
+
+            <View
+                android:id="@+id/divider"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:background="#dddddd"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topHeader" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/startDestination"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/header_marker" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgDivider"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:rotation="90"
+                    app:layout_constraintEnd_toEndOf="@+id/startDestination"
+                    app:layout_constraintStart_toStartOf="@+id/startDestination"
+                    app:layout_constraintTop_toBottomOf="@+id/startDestination"
+                    app:srcCompat="@drawable/dashed_line" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvEndDestination"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/end_destination"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="@+id/startDestination"
+                    app:layout_constraintStart_toStartOf="@+id/startDestination"
+                    app:layout_constraintTop_toBottomOf="@+id/imgDivider" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvStartDestinationAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:textColor="@color/black"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    app:layout_constrainedHeight="true"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/startDestination"
+                    app:layout_constraintEnd_toStartOf="@+id/startDestination"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/startDestination"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:text="@tools:sample/lorem/random" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvEndDestinationAddress"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:textColor="@color/black"
+                    app:layout_constrainedHeight="true"
+                    app:layout_constrainedWidth="true"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvEndDestination"
+                    app:layout_constraintEnd_toStartOf="@+id/tvEndDestination"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/tvEndDestination"
+                    app:layout_constraintVertical_bias="0.0"
+                    tools:text="@tools:sample/lorem/random" />
+
+                <ir.snapp.box.interview.task.widget.AcceptOfferButton
+                    android:id="@+id/acceptOfferButton"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="48dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    app:cardBackgroundColor="@color/main_button_color"
+                    app:cardCornerRadius="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/tvEndDestination"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="@string/accept_request"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                        android:textColor="@color/white" />
+                </ir.snapp.box.interview.task.widget.AcceptOfferButton>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
