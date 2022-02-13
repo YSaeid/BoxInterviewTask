@@ -25,6 +25,7 @@ dependencyResolutionManagement {
             }
             url 'https://api.mapbox.com/downloads/v2/releases/maven'
         }
+        maven { url "https://jitpack.io" }
     }
 }
 rootProject.name = "BoxInterview"
