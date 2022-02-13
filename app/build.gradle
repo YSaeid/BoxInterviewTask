@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
     id 'com.google.gms.google-services'
+    id 'kotlin-kapt'
+    id 'kotlin-parcelize'
 }
 
 android {
@@ -13,8 +15,10 @@ android {
         targetSdk 31
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField 'String', 'BASE_URL', '"https://api.mapbox.com"'
+        vectorDrawables.generatedDensities = ['ldpi', 'mdpi', 'hdpi', 'xhdpi', 'xxhdpi', 'xxxhdpi']
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildFeatures {
@@ -34,6 +38,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    lint {
+        abortOnError false
+        checkReleaseBuilds false
+    }
 }
 
 dependencies {
@@ -42,6 +50,12 @@ dependencies {
         exclude group: 'androidx.interpolator', module: 'interpolator'
     }
     implementation libs
+    kapt kaptLibraries
     testImplementation unitTestLibs
     androidTestImplementation instrumentationTestLibs
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes true
 }
