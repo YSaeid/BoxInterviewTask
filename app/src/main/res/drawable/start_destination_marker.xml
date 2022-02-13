@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:bottom="48dp">
+        <rotate
+            android:drawable="@drawable/line"
+            android:fromDegrees="90"
+            android:pivotX="50%"
+            android:pivotY="50%"
+            android:toDegrees="90" />
+    </item>
+    <item
+        android:bottom="72dp"
+        android:drawable="@drawable/header_marker"
+        android:left="8dp"
+        android:right="8dp"
+        android:top="8dp">
+    </item>
+</layer-list>
