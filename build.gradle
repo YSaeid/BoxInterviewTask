@@ -11,19 +11,51 @@ buildscript {
         espresso_core = '3.4.0'
         mapbox = '10.2.0'
         firebase_bom = '29.0.4'
-
+        firebase_messaging = '23.0.0'
+        koin_version = '3.1.5'
+        gson = '2.8.9'
+        mapstuct = '1.5.0.Beta1'
+        kotlin_version = '1.6.0'
+        coroutines_version = '1.5.2'
+        lifecycle = '2.4.0'
+        retrofit_version = '2.9.0'
+        screenshot = '2.0.0'
         //MapBox SDK
         mapboxLib = [
                 "com.mapbox.maps:android:$mapbox"
         ]
         libs = [
+                //Kotlin Standard Lib
+                "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+//                "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version",
+                "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version",
+
                 "androidx.core:core-ktx:$core_ktx",
                 "androidx.appcompat:appcompat:$appcompat",
                 "com.google.android.material:material:$material",
                 "androidx.constraintlayout:constraintlayout:$constraintlayout",
+                "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle",
+                "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle",
 
                 //firebase
                 'com.google.firebase:firebase-analytics-ktx',
+                "com.google.firebase:firebase-messaging:$firebase_messaging",
+
+                //Android Koin DI
+                "io.insert-koin:koin-android:$koin_version",
+
+                //GSON
+                "com.google.code.gson:gson:$gson",
+
+                //Data Mapper
+                "org.mapstruct:mapstruct:$mapstuct",
+
+                // Android Retrofit A type-safe HTTP client for android
+                "com.squareup.retrofit2:retrofit:$retrofit_version",
+                "com.squareup.retrofit2:converter-gson:$retrofit_version",
+
+                // Take Screen Shot of a view
+                "com.github.nisrulz:screenshott:$screenshot"
         ]
         unitTestLibs = [
                 "junit:junit:$junit",
@@ -31,6 +63,9 @@ buildscript {
         instrumentationTestLibs = [
                 "androidx.test.ext:junit:$ext_junit",
                 "androidx.test.espresso:espresso-core:$espresso_core"
+        ]
+        kaptLibraries = [
+                "org.mapstruct:mapstruct-processor:$mapstuct"
         ]
     }
 
