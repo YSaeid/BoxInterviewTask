@@ -1,8 +1,19 @@
 <resources>
     <string name="app_name">BoxInterview</string>
     <string name="mapbox_access_token">pk.eyJ1Ijoicy15YXpkYW5pIiwiYSI6ImNremdwbWRqdDNyajYyb3B2ZWcwY3k1MmUifQ.SqEYog0GvYia26dVnAincQ</string>
+
     <string name="location_permission_title_dialog">سیستم موقعیت یاب</string>
     <string name="location_permission_message_dialog">برای استفاده از نفشه و موقعیت مکانی نیاز به دسترسی موقعیت مکانی است، آیا مایل هستید این دسترسی را بدهید؟</string>
     <string name="location_permission_positive_button_dialog">بله</string>
     <string name="location_permission_negative_button_dialog">خیر</string>
+
+    <!--Network Errors-->
+    <string name="network_error_code_401">دسترسی غیرمجاز!</string>
+    <string name="network_error_code_500">خطای سرور!</string>
+    <string name="network_error_no_internet">اتصال به اینترنت وجود ندارد!</string>
+    <string name="network_error_timeout">پاسخی دریافت نشد!</string>
+    <string name="network_error_general">خطای عمومی!</string>
+    <string name="accept_request">قبول درخواست</string>
+
+
 </resources>
