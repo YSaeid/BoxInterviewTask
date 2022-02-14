@@ -314,7 +314,7 @@ class MainActivity : BaseActivity(), MainActivityTasks, AcceptOfferButton.LongCl
         // call get address service to obtain terminal start and end address automatically
         viewModel.getAddress()
         binding.tvStartDestinationAddress.setOnClickListener {
-            zoomMapCameraToUserLocation()
+            zoomMapCameraToStartDestinationLocation()
         }
         binding.tvEndDestinationAddress.setOnClickListener {
             zoomMapCameraToEndDestinationLocation()
