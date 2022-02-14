@@ -22,4 +22,5 @@ interface MainActivityTasks {
     fun zoomMapCameraToEndDestinationLocation()
     fun boundMapCameraToStartAndEndDestination()
     fun showOfferContent()
+    fun removeMarkers()
 }
