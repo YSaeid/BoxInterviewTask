@@ -38,8 +38,10 @@ import com.mapbox.maps.*
 import com.mapbox.maps.plugin.LocationPuck2D
 import com.mapbox.maps.plugin.animation.MapAnimationOptions
 import com.mapbox.maps.plugin.animation.easeTo
+import com.mapbox.maps.plugin.annotation.AnnotationPlugin
 import com.mapbox.maps.plugin.annotation.annotations
 import com.mapbox.maps.plugin.annotation.generated.OnPointAnnotationClickListener
+import com.mapbox.maps.plugin.annotation.generated.PointAnnotationManager
 import com.mapbox.maps.plugin.annotation.generated.PointAnnotationOptions
 import com.mapbox.maps.plugin.annotation.generated.createPointAnnotationManager
 import com.mapbox.maps.plugin.locationcomponent.location
@@ -68,6 +70,9 @@ class MainActivity : BaseActivity(), MainActivityTasks, AcceptOfferButton.LongCl
 
     private lateinit var mapView: MapView
     private lateinit var mapBoxMap: MapboxMap
+    private lateinit var annotationApi: AnnotationPlugin
+    private lateinit var startPointAnnotationManager: PointAnnotationManager
+    private lateinit var endPointAnnotationOptions: PointAnnotationManager
 
     private val permission: ActivityResultContracts.RequestPermission =
         ActivityResultContracts.RequestPermission()
@@ -86,6 +91,7 @@ class MainActivity : BaseActivity(), MainActivityTasks, AcceptOfferButton.LongCl
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         mapView = binding.mapView
+        annotationApi = mapView.annotations
         mapBoxMap = mapView.getMapboxMap()
 
         // subscribe to LiveData observer when app is in foreground
@@ -107,6 +113,7 @@ class MainActivity : BaseActivity(), MainActivityTasks, AcceptOfferButton.LongCl
     // subscribe to LiveData observer when app is in foreground
     override fun onRefreshLocation() {
         viewModel.locationState.observe(this) {
+            removeMarkers()
             addStartDestinationMarker()
         }
     }
@@ -244,14 +251,13 @@ class MainActivity : BaseActivity(), MainActivityTasks, AcceptOfferButton.LongCl
         val lat = viewModel.locationState.value?.startDestination?.latitude()!!
         bitmapFromDrawableRes(this, R.drawable.start_destination_marker)?.let {
             Log.e("Saeid", "addStartDestinationMarker: $lng")
-            val annotationApi = mapView.annotations
-            val pointAnnotationManager =
+            startPointAnnotationManager =
                 annotationApi.createPointAnnotationManager()
             val pointAnnotationOptions: PointAnnotationOptions = PointAnnotationOptions()
                 .withPoint(Point.fromLngLat(lng, lat))
                 .withIconImage(it)
-            pointAnnotationManager.create(pointAnnotationOptions)
-            pointAnnotationManager.addClickListener(OnPointAnnotationClickListener {
+            startPointAnnotationManager.create(pointAnnotationOptions)
+            startPointAnnotationManager.addClickListener(OnPointAnnotationClickListener {
                 zoomMapCameraToStartDestinationLocation()
                 true
             })
@@ -266,14 +272,13 @@ class MainActivity : BaseActivity(), MainActivityTasks, AcceptOfferButton.LongCl
         val markerBinding = DestinationMarkerBinding.inflate(layoutInflater)
         val b = ScreenShott.getInstance().takeScreenShotOfJustView(markerBinding.root)
         b.let {
-            val annotationApi = mapView.annotations
-            val pointAnnotationManager =
+            endPointAnnotationOptions =
                 annotationApi.createPointAnnotationManager()
             val pointAnnotationOptions: PointAnnotationOptions = PointAnnotationOptions()
                 .withPoint(Point.fromLngLat(lng, lat))
                 .withIconImage(it)
-            pointAnnotationManager.create(pointAnnotationOptions)
-            pointAnnotationManager.addClickListener(OnPointAnnotationClickListener {
+            endPointAnnotationOptions.create(pointAnnotationOptions)
+            endPointAnnotationOptions.addClickListener(OnPointAnnotationClickListener {
                 zoomMapCameraToEndDestinationLocation()
                 true
             })
@@ -406,6 +411,13 @@ class MainActivity : BaseActivity(), MainActivityTasks, AcceptOfferButton.LongCl
             }
             val token = task.result
             Log.d("FCM token:", "handle Firebase token: $token")
+        }
+    }
+
+    override fun removeMarkers() {
+        if (this::startPointAnnotationManager.isInitialized && this::endPointAnnotationOptions.isInitialized) {
+            annotationApi.removeAnnotationManager(startPointAnnotationManager)
+            annotationApi.removeAnnotationManager(endPointAnnotationOptions)
         }
     }
 
